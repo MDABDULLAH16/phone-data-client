@@ -17,7 +17,12 @@ const router = createBrowserRouter([
         element: <Phones></Phones>,
         loader: () => fetch("http://localhost:5000/phones"),
       },
-      { path: "/phone/:id", element: <Phone></Phone> },
+      {
+        path: "/phone/:id",
+        element: <Phone></Phone>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/phones/${params.id}`),
+      },
     ],
   },
 ]);
